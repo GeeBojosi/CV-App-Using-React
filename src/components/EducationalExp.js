@@ -1,70 +1,90 @@
 import React, { Component } from 'react';
+import EditEducation from "../editableForms/EditEducation";
 import { months, years, edOptions } from "../selectData";
 
 class EducationalExp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ed_level: edOptions[0]
+      isEditing: true,
+      select_education: "",
+      school_name: "",
+      study_name: "",
+      period_name: false,
+      month_from: "",
+      month_to: "",
+      year_from: "",
+      year_to: ""
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleChange(evt) {
-    console.log([evt.target.name])
+    const value = evt.target.type === "checkbox" ? evt.target.checked : evt.target.value;
     this.setState({
-      [evt.target.name] : evt.target.value
+      [evt.target.name]: value,
     })
+  };
+
+  handleSubmit(evt) {
+    evt.preventDefault();
+    this.setState({ isEditing: !this.state.isEditing })
   }
 
   render() {
-    const yrs = years.map(year => (
-      <option value={year} key={year}>{year}</option>
-    ));
-    const mon = months.map((month, i) => (
-      <option value={month} key={i}>{month}</option>
-    ));
-    const edLevels = edOptions.map((edLevel, i) => (
-      <option value={edLevel} key={i}>{edLevel}</option>
-    ));
-    return (
-      <div>
-        <h2>Education</h2>
-        <form>
-          {/* add value={this.state.xxxx} */}
-          <label htmlFor="select-education">Level of Education: </label>
-          <select name="select-education" id="select-education" value={this.state.ed_level} onChange={this.handleChange}>
-            {edLevels}
-          </select>
-          <label htmlFor="school-name">School or University: </label>
-          <input type="text" name="school-name" id="school-name" />
-          <label htmlFor="study-name">Field of Study: </label>
-          <input type="text" name="study-name" id="study-name" />
-          <label htmlFor="period">Time Period: </label>
-          <input type="checkbox" name="period-name" id="period-name" />
-          <span>Currently enrolled: </span>
+    let results;
+    if (!this.state.isEditing) {
+      results = <EditEducation />
+    } else {
+      results = (
+        <div>
+          <h2>Education</h2>
+          <form onSubmit={this.handleSubmit}>
+            {/* add value={this.state.xxxx} */}
+            <label htmlFor="select_education">Level of Education: </label>
+            <select name="select_education" id="select_education" value={this.state.ed_level} onChange={this.handleChange}>
+              {edOptions.map((edLevel, i) => (
+                <option value={edLevel} key={i}>{edLevel}</option>
+              ))}
+            </select>
+            <label htmlFor="school_name">School or University: </label>
+            <input type="text" name="school_name" id="school_name" value={this.state.school_name} onChange={this.handleChange} />
+            <label htmlFor="study_name">Field of Study: </label>
+            <input type="text" name="study_name" id="study_name" value={this.state.study_name} onChange={this.handleChange} />
+            <label htmlFor="period">Time Period: </label>
+            <input type="checkbox" name="period_name" id="period_name" checked={this.state.period_name} onChange={this.handleChange} />
+            <span>Currently enrolled: </span>
 
-          <label htmlFor="month-from">From:</label>
-          <select name="month-from" id="month-form">
-            <option>Month: </option>
-            {mon}
-          </select>
-          <select name="year-from" id="year-form">
-            {yrs}
-          </select>
+            <label htmlFor="month_from">From:</label>
+            <select name="month_from" id="month_form" value={this.state.month_from} onChange={this.handleChange}>
+              {months.map((month, i) => (
+                <option value={month} key={i}>{month}</option>
+              ))}
+            </select>
+            <select name="year_from" id="year_form" value={this.state.year_from} onChange={this.handleChange}>
+              {years.map(year => (
+                <option value={year} key={year}>{year}</option>
+              ))}
+            </select>
 
-          <label htmlFor="month-to">To:</label>
-          <select name="month-to" id="month-to">
-            <option value>Month: </option>
-            {mon}
-          </select>
-          <select name="year-to" id="year-to">
-            {yrs}
-          </select>
-        </form>
-      </div>
-    )
+            <label htmlFor="month_to">To:</label>
+            <select name="month_to" id="month_to" value={this.state.month_to} onChange={this.handleChange}>
+              {months.map((month, i) => (
+                <option value={month} key={i}>{month}</option>
+              ))}
+            </select>
+            <select name="year_to" id="year_to" value={this.state.year_to} onChange={this.handleChange}>
+              {years.map(year => (
+                <option value={year} key={year}>{year}</option>
+              ))}
+            </select>
+            <button>Submit</button>
+          </form>
+        </div>
+      )
+    }
+    return results;
   };
-};
-
+}
 export default EducationalExp;

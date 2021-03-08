@@ -1,5 +1,5 @@
 const years = [
-  2031,
+  null, 2031,
   2030, 2029,
   2028, 2027,
   2026, 2025,
@@ -52,6 +52,7 @@ const years = [
 <option value="DECEMBER">DECEMBER</option> */}
 
 const months = [
+  null,
   "JANUARY",
   "FEBRUARY",
   "MARCH",
@@ -67,6 +68,7 @@ const months = [
 ]
 
 const edOptions = [
+  null,
   "Grade12",
   "Diploma",
   "Degree",
