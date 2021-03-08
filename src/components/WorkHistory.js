@@ -18,6 +18,7 @@ class WorkHistory extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
   };
 
   handleChange(evt) {
@@ -32,10 +33,34 @@ class WorkHistory extends Component {
     this.setState({ isEditing: !this.state.isEditing })
   }
 
+  toggleForm() {
+    this.setState({ isEditing: !this.state.isEditing });
+  }
+
   render() {
     let results;
+    const { job_title,
+      company_name,
+      year_from,
+      month_from,
+      year_to,
+      month_to,
+      description
+    } = this.state;
+
     if (!this.state.isEditing) {
-      results = <EditWork />
+      results = (
+        <EditWork
+          job_title={job_title}
+          company_name={company_name}
+          year_from={year_from}
+          month_from={month_from}
+          year_to={year_to}
+          month_to={month_to}
+          description={description}
+          toggleForm={this.toggleForm}
+        />
+      )
     } else {
       results = (
         <div>

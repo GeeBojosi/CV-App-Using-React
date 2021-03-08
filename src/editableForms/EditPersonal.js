@@ -30,3 +30,9 @@ class EditPersonal extends Component {
 
 export default EditPersonal;
 
+// job_title={job_title}
+//           company_name={company_name}
+//           year_from={year_from}
+//           month_from={month_from}
+//           year_to={year_to}
+//           month_to={month_to}

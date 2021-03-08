@@ -18,6 +18,7 @@ class EducationalExp extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.toggleForm = this.toggleForm.bind(this);
   };
 
   handleChange(evt) {
@@ -32,10 +33,33 @@ class EducationalExp extends Component {
     this.setState({ isEditing: !this.state.isEditing })
   }
 
+  toggleForm() {
+    this.setState({ isEditing: !this.state.isEditing });
+  }
+
   render() {
+    const {
+      select_education,
+      study_name,
+      school_name,
+      month_from,
+      year_from,
+      month_to,
+      year_to
+    } = this.state;
+
     let results;
     if (!this.state.isEditing) {
-      results = <EditEducation />
+      results = <EditEducation
+        select_education={select_education}
+        study_name={study_name}
+        school_name={school_name}
+        month_from={month_from}
+        month_to={month_to}
+        year_from={year_from}
+        year_to={year_to}
+        toggleForm={this.toggleForm}
+      />
     } else {
       results = (
         <div>
@@ -43,7 +67,7 @@ class EducationalExp extends Component {
           <form onSubmit={this.handleSubmit}>
             {/* add value={this.state.xxxx} */}
             <label htmlFor="select_education">Level of Education: </label>
-            <select name="select_education" id="select_education" value={this.state.ed_level} onChange={this.handleChange}>
+            <select name="select_education" id="select_education" value={this.state.select_education} onChange={this.handleChange}>
               {edOptions.map((edLevel, i) => (
                 <option value={edLevel} key={i}>{edLevel}</option>
               ))}
