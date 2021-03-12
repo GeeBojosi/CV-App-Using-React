@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.WorkHistory {
+  margin: 0 auto;
+  width: 60%;
+  border: 1px solid black;
+  border-top: none;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.WorkHistory form {
+  display: flex;
+  flex-direction: column;
+}
+
+.WorkHistory form label {
+  align-self: start;
+  color: steelblue;
+  font-weight: 400;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.WorkHistory form input {
+  padding: 3px;
+  border: 1px solid blue;
+  border-radius: 3px;
+}
+
+.WorkHistory form button {
+  background: steelblue;
+  color: #fff;
+  width: 20%;
+  margin-top: 10px;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.WorkHistory form button:hover {
+  cursor: pointer;
+  background: rgb(32, 72, 106);
+}
+
+/* style saved html section */
+
+.WorkHistoryEdit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid black;
+  border-top: none;
+  margin: 0 auto;
+  width: 60%;
+}
+
+.WorkHistoryEdit-title {
+  color: grey;
+  font-weight: 100;
+  font-size: 1rem;
+}
+
+.WorkHistoryEdit h3, p {
+  align-self: flex-start;
+  margin-left: 1rem;
+  padding-top: 0.75rem;
+  position: relative;
+}
+
+.WorkHistoryEdit button{
+  background: none;
+  font-size: 1em;
+  border: none;
+  color: steelblue;
+  position: relative;
+  top: -90px;
+  left: 300px;
+}
+
+.WorkHistoryEdit button:hover {
+  cursor: pointer;
+}

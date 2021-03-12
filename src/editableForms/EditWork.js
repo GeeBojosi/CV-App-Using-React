@@ -14,22 +14,25 @@ class EditWork extends Component {
     const {
       job_title,
       company_name,
-      year_form,
+      year_from,
       month_from,
       year_to,
       month_to,
       description
     } = this.props;
     return (
-      <div>
-        <h3>Work Experience</h3>
-        <h2>{job_title}</h2>
+      <div className="WorkHistoryEdit">
+        <hr />
+        <h3 className="WorkHistoryEdit-title">Work Experience</h3>
+        <h3>{job_title}</h3>
         <p>{company_name}</p>
-        <p>{year_form} {month_from} to {year_to} {month_to}</p>
+        <p>{year_from} {month_from} to {year_to} {month_to}</p>
         <p>{description}</p>
-        <button onClick={this.handleToggle}>
-          Edit
-        </button>
+        <div className="WorkHistoryEdit-buttons">
+          <button onClick={this.handleToggle}>
+            <i className="fas fa-pen" />
+          </button>
+        </div>
       </div>
     )
   };

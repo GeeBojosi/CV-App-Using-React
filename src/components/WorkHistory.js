@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EditWork from "../editableForms/EditWork";
 import { months, years, edOptions } from "../selectData";
+import "../styles/WorkHistory.css";
 
 class WorkHistory extends Component {
   constructor(props) {
@@ -63,13 +64,13 @@ class WorkHistory extends Component {
       )
     } else {
       results = (
-        <div>
+        <div className="WorkHistory">
           <h2>Work Experience</h2>
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="job_title">Job Title: </label>
-            <input type="type" name="job_title" value={this.state.job_title} onChange={this.handleChange} />
+            <input type="type" name="job_title" value={this.state.job_title} onChange={this.handleChange} required/>
             <label htmlFor="company_name">Company Name: </label>
-            <input type="text" name="company_name" value={this.state.company_name} onChange={this.handleChange} />
+            <input type="text" name="company_name" value={this.state.company_name} onChange={this.handleChange} required/>
             <label htmlFor="">Description: </label>
             <textarea
               name="description"
@@ -78,10 +79,7 @@ class WorkHistory extends Component {
               onChange={this.handleChange}
             >
             </textarea>
-            <label htmlFor="period">Time Period: </label>
-            <input type="checkbox" name="period_name" id="period_name" checked={this.state.period_name} onChange={this.handleChange} />
-            <span>Currently enrolled: </span>
-
+         
             <label htmlFor="month_from">From:</label>
             <select name="month_from" id="month_form" value={this.state.month_from} onChange={this.handleChange}>
               {months.map((month, i) => (

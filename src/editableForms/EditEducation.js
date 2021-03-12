@@ -21,14 +21,17 @@ class EditEducation extends Component {
       year_to
     } = this.props;
     return (
-      <div>
-        <h3>Education</h3>
-        <h2>{select_education} in {study_name}</h2>
+      <div className="EducationEdit">
+        <hr />
+        <h3 className="EducationEdit-title">Education</h3>
+        <h3>{select_education} in {study_name}</h3>
         <p>{school_name}</p>
         <p>{month_from} {year_from} to {month_to} {year_to}</p>
-        <button onClick={this.handleToggle}>
-          Edit
-        </button>
+        <div className="EducationEdit-buttons">
+          <button onClick={this.handleToggle}>
+            <i className="fas fa-pen" />
+          </button>
+        </div>
       </div>
     )
   }

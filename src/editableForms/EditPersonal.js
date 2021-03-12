@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "../styles/Personal.css";
 
 class EditPersonal extends Component {
   constructor(props) {
@@ -14,13 +15,13 @@ class EditPersonal extends Component {
     const { name, lastname, phone, email } = this.props;
 
     return (
-      <div>
+      <div className="PersonalEdit">
         <h3>{name} {lastname}</h3>
         <p>{email}</p>
         <p>{phone}</p>
-        <div>
+        <div className="PersonalEdit-buttons">
           <button onClick={this.handleToggle}>
-            Edit
+            <i className="fas fa-pen" />
           </button>
         </div>
       </div>

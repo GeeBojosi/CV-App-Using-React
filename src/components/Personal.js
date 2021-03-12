@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import EditPersonal from "../editableForms/EditPersonal";
+import "../styles/Personal.css";
 
 class Personal extends Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class Personal extends Component {
       )
     } else {
       results = (
-        <div>
+        <div className="Personal">
           <h2>Personal Information:</h2>
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="first_name">First Name:</label>
@@ -56,6 +57,7 @@ class Personal extends Component {
               name="first_name"
               value={this.state.first_name}
               onChange={this.handleChange}
+              required
             />
 
             <label htmlFor="last_name">Last Name:</label>
@@ -65,6 +67,7 @@ class Personal extends Component {
               name="last_name"
               value={this.state.last_name}
               onChange={this.handleChange}
+              required
             />
 
             <label htmlFor="phone_number">Phone Number:</label>
@@ -75,6 +78,7 @@ class Personal extends Component {
               value={this.state.phone_number}
               onChange={this.handleChange}
               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required
+              placeholder="123-45-6789"
               onChange={this.handleChange}
             />
 
@@ -86,6 +90,7 @@ class Personal extends Component {
               value={this.state.email}
               placeholder="email@address.com"
               onChange={this.handleChange}
+              required
             />
             <button>Submit</button>
           </form>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EditEducation from "../editableForms/EditEducation";
 import { months, years, edOptions } from "../selectData";
+import "../styles/Education.css";
 
 class EducationalExp extends Component {
   constructor(props) {
@@ -62,7 +63,7 @@ class EducationalExp extends Component {
       />
     } else {
       results = (
-        <div>
+        <div className="Education">
           <h2>Education</h2>
           <form onSubmit={this.handleSubmit}>
             {/* add value={this.state.xxxx} */}
@@ -73,15 +74,20 @@ class EducationalExp extends Component {
               ))}
             </select>
             <label htmlFor="school_name">School or University: </label>
-            <input type="text" name="school_name" id="school_name" value={this.state.school_name} onChange={this.handleChange} />
+            <input
+              type="text"
+              name="school_name"
+              id="school_name"
+              value={this.state.school_name}
+              onChange={this.handleChange}
+              required
+            />
             <label htmlFor="study_name">Field of Study: </label>
             <input type="text" name="study_name" id="study_name" value={this.state.study_name} onChange={this.handleChange} />
-            <label htmlFor="period">Time Period: </label>
-            <input type="checkbox" name="period_name" id="period_name" checked={this.state.period_name} onChange={this.handleChange} />
-            <span>Currently enrolled: </span>
+            {/*  */}
 
             <label htmlFor="month_from">From:</label>
-            <select name="month_from" id="month_form" value={this.state.month_from} onChange={this.handleChange}>
+            <select name="month_from" id="month_from" value={this.state.month_from} onChange={this.handleChange}>
               {months.map((month, i) => (
                 <option value={month} key={i}>{month}</option>
               ))}
